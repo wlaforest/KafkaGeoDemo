@@ -1,0 +1,4 @@
+{
+  "kafkaevent.http.port" : 8080,
+  "kafkaevent.static.path" : "src/main/resources/static/"
+}

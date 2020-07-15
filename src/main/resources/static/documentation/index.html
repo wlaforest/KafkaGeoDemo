@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>Clean Admin Documentation</title>
+  <meta name="description" content="Clean Admin template documentation by Web factory Ltd. Sold exclusively on ThemeForest." />
+  <meta name="lang" content="en" />
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print" />
+  <!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+  <link href="assets/js/styles/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="assets/js/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container">
+    <h3 class="center alt">&ldquo;Clean Admin&rdquo; Documentation by &ldquo;Web factory Ltd&rdquo; v1.05</h3>
+    <hr>
+    <h1 class="center">&ldquo;Clean Admin&rdquo; admin template</h1>
+    <div class="borderTop">
+      <div class="span-6 colborder info prepend-1">
+        <p class="prepend-top"><b>
+          Created: 2012/05/03, revision 4<br />
+          By: Web factory Ltd<br>
+          Support: <a href="http://themeforest.net/user/WebFactory">via ThemeForest</a></b>
+        </p>
+      </div><!-- end div .span-6 -->
+      <div class="span-12 last">
+        <p class="prepend-top append-0">Thank you very much for purchasing our admin template. If you have any questions that are beyond the scope of this help file, please feel free to email us via our user page <a href="http://themeforest.net/user/webfactory">contact form</a>. Have a good one!</p>
+      </div>
+    </div><!-- end div .borderTop -->
+  </div><!-- end div .container -->
+  <div class="container">
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="#htmlFiles">HTML Files</a></li>
+      <li><a href="#htmlStructure">HTML Structure</a></li>
+      <li><a href="#cssFiles">CSS Files and Colors Themes</a></li>
+      <li><a href="#javascript">JavaScript</a></li>
+      <li><a href="#psd">PSD Files</a></li>
+      <li><a href="#credits">Sources and Credits</a></li>
+      <li><a href="http://clean-admin.webfactoryltd.com/">Online Demo</a></li>
+    </ol>
+  </div><!-- end div .container -->
+  
+   <div class="container">
+    <h3 id="htmlFiles"><strong>A) HTML Files</strong> - <a href="#toc">top</a></h3>
+    <p>Clean admin comes with 4 HTML files:</p>
+    
+    <ul>
+      <li><b>index.html</b> - login form</li>
+      <li><b>register.html</b> - register form</li>
+      <li><b>home.html</b> - page with all HTML elements, including the menu</li>
+      <li><b>single-page.html</b> - single/static page with menu and plain text content</li>
+    </ul>
+    
+    <p>Every file has a minimal set of included CSS and JS files in order to minimize load times. If you're having issues with any JS component please make sure you include all the necessary files and init the script as well.</p>
+
+    
+  </div><!-- end div .container -->
+  
+  <div class="container">
+<h3 id="htmlStructure"><strong>B) HTML Structure</strong> - <a href="#toc">top</a></h3>
+    <p>Template's layout is <strong>fixed</strong>, 960px wide with <strong>1 main center column</strong> that can be divided in multiple sub-columns with a minimum width of 1/16. Template uses the <a href="http://960.gs/">960 Grid System</a>, <strong>HTML5</strong> and <strong>CSS3</strong>.</p>
+    
+    <p>When editing the HTML please keep in mind the structure below and try to use one of the provided templates. It'll make your job a lot easier. Layout wise, there's no need to edit the CSS. Everything can be accomplished with the predefined classes. Just look at the examples.</p>
+    
+    <h4>HTML layout structure for home.html</h4>
+    <div class="struct">
+      <strong>div #glow</strong><br />
+      Header glow/BG effect. Remove the whole div if you want to remove it.
+    </div>
+    
+    <div class="struct">
+    <strong>div #top</strong><br />
+    
+    <div class="struct">
+      <strong>div #logo</strong><br />
+      Logo and tagline.
+    </div>
+    
+    <div class="struct">
+      <strong>div #logout</strong><br />
+      Logout and user profile links.
+    </div>
+  
+    </div>
+    <div class="struct">
+      <strong>div #nav-container</strong><br />
+      Complete main menu and search.
+    </div>
+  
+    <div class="struct">
+      <strong>div .container_16 .admin-panel .background</strong><br />
+      Main content area separated containing boxes of various widths.
+      
+      <div class="struct">
+        <strong>div .module-box .grid_12 .alpha</strong><br />
+        First box in row (alpha) with 12/16 width.
+          <div class="struct">
+            <strong>h2 .title .show_hide</strong><br />
+            Box title with show/hide button.
+          </div>
+          <div class="struct">
+            <strong>h2 .module-box-inner</strong><br />
+            Box content.
+          </div>
+      </div>
+      <div class="struct">
+        <strong>div .module-box .grid_4 .omega</strong><br />
+        Second (and last) box in row (omega) with 4/16 width.
+      </div>
+      <div class="struct">
+        <strong>div .clear</strong><br />
+        Remember to clear after every row, or box with .omega.
+      </div>
+      <div class="struct">
+        <strong>div .module-box .grid_4 .alpha</strong><br />
+        First box in row (alpha) with 4/16 width.
+      </div>
+      <div class="struct">
+        <strong>div .module-box .grid_4</strong><br />
+        Second box in row with 4/16 width.
+      </div>
+      <div class="struct">
+        <strong>div .module-box .grid_4</strong><br />
+        Third box in row with 4/16 width.
+      </div>
+      <div class="struct">
+        <strong>div .module-box .grid_4 .omega</strong><br />
+        Fourth, last box in row with 4/16 width.
+      </div>
+      
+      
+      <div class="struct">
+        <strong>div .clear</strong><br />
+        Remember to clear after every row, or box with .omega.
+      </div>
+    </div>
+
+  <div class="struct">
+    <strong>div #footer-inner-page</strong><br />
+        Minimal footer with go-to-top link.
+  </div>
+  
+  <br><br>
+   <h4>HTML layout structure for single-page.html</h4>
+    <div class="struct">
+      <strong>div #glow</strong><br />
+      Header glow/BG effect. Remove the whole div if you want to remove it.
+    </div>
+    
+    <div class="struct">
+    <strong>div #top</strong><br />
+    
+    <div class="struct">
+      <strong>div #logo</strong><br />
+      Logo and tagline.
+    </div>
+    
+    <div class="struct">
+      <strong>div #logout</strong><br />
+      Logout and user profile links.
+    </div>
+  
+    </div>
+    <div class="struct">
+      <strong>div #nav-container</strong><br />
+      Complete main menu and search.
+    </div>
+  
+    <div class="struct">
+      <strong>div .container_16 .admin-panel .background</strong><br />
+      Main content area.
+      
+      <div class="struct">
+        <strong>div .module-box .grid_16 .alpha</strong><br />
+        Content. Full width. Everything goes here.
+      </div>
+      <div class="struct">
+        <strong>div .clear</strong><br />
+        Always remember to "clear".
+      </div>
+    </div>
+
+  <div class="struct">
+    <strong>div #footer-inner-page</strong><br />
+        Minimal footer with go-to-top link.
+  </div>
+  
+  
+    <br><br>
+   <h4>HTML layout structure for index.html and register.html</h4>
+    <div class="struct">
+      <strong>div #glow</strong><br />
+      Header glow/BG effect. Remove the whole div if you want to remove it.
+    </div>
+    
+    <div class="struct">
+    <strong>div .login-form container_16</strong><br />
+    Main container.
+    
+    <div class="struct">
+      <strong>div #logo</strong><br />
+      Logo.
+    </div>
+    
+    <div class="struct">
+      <strong>form</strong><br />
+      All form elements go here.
+      
+      <div class="struct">
+        <strong>h5</strong><br />
+        Title.
+      </div>
+      
+      <div class="struct">
+        <strong>div #fields</strong><br />
+        Form fields and labels.
+        
+        <div class="struct">
+          <strong>label</strong><br />
+          Field label #1.
+        </div>
+        <div class="struct">
+          <strong>input</strong><br />
+          Field #1.
+        </div>
+        <div class="struct">
+          <strong>label</strong><br />
+          Field label #2.
+        </div>
+        <div class="struct">
+          <strong>input</strong><br />
+          Field #2.
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    <div class="struct">
+      <strong>div #footer</strong><br />
+      Simple one-line footer.
+    </div>
+  
+    </div>
+    
+
+  <p><strong>Making the main menu "normal" (non-sticky)</strong></p>
+  <p>To make the menu scroll with the rest of the content (make it non-sticky) just remove "sticky" class from DIV with id "navigation".</p>
+
+  <p><strong>Modifying the main menu</strong></p>
+  <p>Main menu is located in navigation div. Each LI element in <i>ul#main-nav</i> represents one menu item. If you want to create submenus just create a sub UL element using the same rules. Apply a "current_menu_item" class to any LI element to mark it as the selected item. Simple menu example:</p>
+  
+    <script type="syntaxhighlighter" class="brush: html">
+    <![CDATA[
+    <ul id="main-nav">
+		  <li class="current_menu_item"><a href="#"><span class="nav-icon icon-home">Dashboard</a></li>
+		  <li><a href="#"><span class="nav-icon icon-pencil"></span>Single Page</a></li>
+		  <li><a href="#"><span class="nav-icon icon-bar-chart"></span>Charts</a></li>
+		  <li><a href="#"><span class="nav-icon icon-arrow-down"></span>Sub Menu</a>
+    </ul>
+     ]]>
+    </script>
+    
+    <p><br><b>Removing the open/close button from boxes</b><br />
+    If you want to remove the open/close button from a single box just remove the SPAN element with "show_hide" from that box. If you want to disable that functionality on the whole site open common.js and remove the JS from line #54 to #58.</p>
+    
+  </div><!-- end div .container -->
+  
+  
+  <div class="container">
+  <h3 id="cssFiles"><strong>C) CSS Files and Colors Themes</strong> - <a href="#toc">top</a></h3>
+  <h4>List of included color themes (10):</h4>
+    <ul>
+      <li>blue.css (default)</li>
+      <li>brown.css</li>
+      <li>golden.css</li>
+      <li>green.css</li>
+      <li>orange.css</li>
+      <li>pink.css</li>
+      <li>red.css</li>
+      <li>silver.css</li>
+      <li>silver-dark.css</li>
+      <li>teal.css</li>
+    </ul>
+    <p>Each color theme has its own CSS file located in <i>/css/color-themes/</i>. Blue is the default theme, included in theme's header. To change the theme just include a different theme CSS file. Please include only one theme at a time.</p>
+    
+  <h4>List of included background textures (5):</h4>
+    <ul>
+      <li>clean.css</li>
+      <li>squares.css</li>
+      <li>stripes.css</li>
+      <li>stripes-rev.css</li>
+      <li>crosshatch.css (default)</li>
+    </ul>
+    
+    <p>Each background texture has its own CSS file located in <i>/css/textures/</i>. Crosshatch is the default background, included in theme's header. To change the background just include a different background CSS file. Please include only one background at a time.</p>
+    
+    <h4>Other CSS files</h4>
+    <ul>
+      <li><b>styles.css</b> - main style file; the only one you should ever modify</li>
+      <li><b>960.css</b> - 960gs original file</li>
+      <li><b>font-awesome.css</b> - font based icons</li>
+      <li><b>ie8.css</b> - IE8 fixes</li>
+      <li><b>prettyPhoto.css</b> - prettyPhoto lightbox styles; un-include this file if you're not using prettyPhoto</li>
+    </ul>
+    <p>The main CSS file (style.css) is separated into following sections for easier editing:</p>  
+  <script type="syntaxhighlighter" class="brush: css">
+    <![CDATA[  
+      /* 
+      * fonts
+      */
+
+      /* 
+      * basic HTML
+      */
+
+      /* 
+      * typography 
+      */
+
+      /*
+      *  blockquotes
+      */
+
+      /*
+      *  links
+      */
+
+      /*
+      *  lists
+      */
+      
+      /*
+      *  images
+      */
+      
+      /*
+      *  buttons
+      */
+      
+      /*
+      *  tabs
+      */
+      
+      /*
+      *  forms
+      */
+      
+      /*
+      *  tooltips
+      */
+      
+      /*
+      *  tables
+      */
+      
+      /*
+      *  spacing
+      */
+      
+      /*
+      *  login page
+      */
+      
+      /*
+      *  register page
+      */
+      
+      /*
+      *  inner page
+      */
+    ]]>
+  </script>
+  <p>If you would like to edit a specific template element, simply find the appropriate label in the CSS file, and then scroll down until you find the style that needs editing.</p>
+  
+  <p><b>Changing fonts</b><br>
+    Fonts are defined on the beginning of main CSS file. Default fonts are Google Fonts - PT Sans and PT Serif. You can easily change the font family by changing those 3 font definitions. Font-size and line-height can also be easily changed. Please bear in mind that changing those properties will significantly change the design and overall appearance of the template.</p>
+    
+  <p><strong>Using font based icons from Font Awesome</strong><br />
+  We've included more than 150 awesome font based icons (along with +500 image icons). In order touse font icons header over to <a href="http://fortawesome.github.com/Font-Awesome/">Font awesome</a> find the icon you need and copy paste it's class (ie: icon-book). Then create an empty SPAN element and just give it that class.</p>
+  
+      <script type="syntaxhighlighter" class="brush: html">
+    <![CDATA[
+		  <span class="icon-book"></span> Book<br />
+		  <span class="icon-bar-chart"></span>  Chart<br />
+		  <span class="icon-time"></span> Clock<br />
+     ]]>
+    </script>
+  <p>Please note: font icons DO NOT work on <i>file://</i> protocol (ie: file preview). You have to view the template via <i>http://</i> protocol.</p>
+  
+  <p><b>Using message boxes</b><br>
+    Clean Admin comes with five predefined message box styles givingyou an option to display; information, warning, error, success or simple message. You can use the messages anywhere in the template; they resize automatically. </p>
+    <script type="syntaxhighlighter" class="brush: html">
+    <![CDATA[
+<div class="sys-message sys-info">
+  <p>Plain/info message (blue).</p>
+</div>
+<div class="sys-message sys-warning">
+  <p>Warning message (orange).</p>
+</div>
+<div class="sys-message sys-error">
+  <p>Error message (red).</p>
+</div>
+<div class="sys-message sys-success">
+  <p>Success message (green).</p>
+</div>
+<div class="sys-message sys-simple">
+  <p>System message (black).</p>
+</div>
+     ]]>
+    </script>
+    
+  <p><b>Using the buttons</b><br>
+  Clean Admin supports three buttons sizes: small, medium and large; as well as six button colors: silver, black, blue, green, orange, red giving you a total of 18 button combinations. Just apply two classes to your buttons as shown below to control the size and the color. You can, of course, use the buttons anywhere on the site.</p>
+
+    <script type="syntaxhighlighter" class="brush: html">
+    <![CDATA[
+<button class="btn-small silver" type="submit">Button silver small</button>
+<button class="btn-small black" type="submit">Button black small</button>
+<button class="btn-medium blue" type="submit">Button blue medium</button>
+<button class="btn-medium green" type="submit">Button green medium</button>
+<button class="btn-large orange" type="submit">Button orange large</button>
+<button class="btn-large red" type="submit">Button red large</button>
+     ]]>
+    </script>
+
+  <p><br><b>Using the tabs, vertical and horizontal</b><br>
+  You can easily create vertical and horizontal tabs with some simple markup. Tabs consist of two UL elements. First one holds the links/tabs list and the other one the content. First list has to have the "tabs" class and the second one "tabs-content" class. Ancors in links have to match the IDs of LI elements in the second list. Here's a simple example of horizontal tabs.</p>
+  
+      <script type="syntaxhighlighter" class="brush: html">
+    <![CDATA[
+<ul class="tabs"><!-- list of tabs -->
+  <li><a class="active" href="#first"><span class="icon-leaf"></span> First tab</a></li>
+  <li><a href="#second"><span class="icon-thumbs-up"></span> Second tab</a></li>
+  <li><a href="#third"><span class="icon-star"></span> Third tab</a></li>
+</ul>
+<ul class="tabs-content"><!-- tabs content -->
+  <li class="active" id="first">Content goes here.</li>
+  <li id="second">Content goes here.</li>
+  <li id="third">Content goes here.</li>
+</ul>
+     ]]>
+    </script>
+
+<p>Converting horizontal tabs to vertical is easy. Just add "vertical-tabs" class to the first list, and "vertical-tab-content" class to the second one.</p>
+    
+  </div><!-- end div .container -->
+  
+  <div class="container">
+    <h3 id="psd"><strong>D) PSD Files</strong> - <a href="#toc">top</a></h3>
+    <p>Clean Admin has a minimal amount of images in order to make the load time minimal. However, we've included two PSD files to make customizing easier. You can find the files in PSD folder. They're properly layered for easier editing.</p>
+    <ul>
+      <li><strong>cleanadmin-background.psd</strong> - header background</li>
+      <li><strong>cleanadmin-logo.psd</strong> - easily editable logo with tagline</li>
+    </ul>
+   </div><!-- end div .container -->
+  
+    <div class="container">
+    <h3 id="javascript"><strong>E) JavaScript</strong> - <a href="#toc">top</a></h3>
+    <p>All JS code is jQuery based. Here's the list of JS files. They're located in the <i>/js/</i> folder.</p>
+    <ul>
+      <li><strong>jquery.prettyPhoto.js</strong> - prettyPhoto lightbox script</li>
+      <li><strong>jquery.tablesorter.js</strong> - tablesorter script</li>
+      <li><strong>jquery.ui.custom.js</strong> - date and other UI components</li>
+      <li><strong>jquery.metadata.js</strong> - metadata extraction helper</li>
+      <li><strong>jquery.tipsy.js</strong> - tooltips script</li>
+      <li><strong>jquery.flot.js</strong> - graphs plotting script</li>
+      <li><strong>excanvas.js</strong> - IE fix for plot graphs</li>
+      <li><strong>markitup/jquery.markitup.js</strong> - WYSIWYG editor</li>
+      <li><strong>tabs.js</strong> - simple tabs script</li>
+      <li><strong>plot-init.js</strong> - example graph init</li>
+      <li><strong>common.js</strong> - misc code, script inits and config for all scripts</li>
+    </ul>
+    
+    <p><br><strong>Configuring the scripts</strong><br>
+    All scripts are initialized in <i>common.js</i> file which is very short and heavily commented. If you don't want to use any of the included scripts be sure to remove them from HTML (remove their include line) and also remove the init code from <i>common.js</i>. For further info on any script please have a look at their original documentation. You can find the links at the bottom of this document.
+    </p>
+    
+    <ul>
+      <li>converting input fields into "fancy date" fields is done by giving the field a "input-date" class</li>
+      <li>converting textareas into WYSIWYG editors is done by giving the textarea a "markitup" class</li>
+      <li>converting regular tables input sortable ones is done by giving the table a "datatable" class</li>
+    </ul>
+    
+    </div><!-- end div .container -->
+    
+  <div class="container">
+    <h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+    <p>Clean Admin uses the following icons, JavaScript libraries and other assets;
+    <ul>
+    <li><strong>960 Grid System</strong><br>
+    http://960.gs/<br>
+    GPL</li>
+    <li><strong>jQuery and jQuery UI</strong><br>http://www.jquery.com<br>Licensed under MIT and GNU GPL version 2</li>
+    <li><strong>prettyPhoto</strong><br>
+   Author Stephane Caron<br>
+   http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/<br>
+   Licensed under Creative Commons Attribution 2.5</li>
+    <li><strong>Splashy icons</strong><br>
+    Dat Nguyen<br>
+    http://splashyfish.com/icons/<br>
+   Free</li>
+    <li><strong>Images used in DEMO ONLY (downloaded version comes with dummy images)</strong><br>
+    Copyright (c) various artist at www.sxc.hu<br>
+    http://www.sxc.hu/photo/308536<br></li>
+    
+    <li><strong>Flot</strong><br>
+    IOLA and Ole Laursen<br>
+    http://code.google.com/p/flot/<br>
+    MIT license
+    </li>
+    <li><strong>jQuery MetaData</strong><br>
+    John Resig, Yehuda Katz, Jörn Zaefferer, Paul McLanahan<br>
+    Licensed under MIT and GNU GPL
+    </li>
+    <li><strong>markItUp</strong><br>
+    http://markitup.jaysalvat.com/home/<br>
+    (c) Jay Salvat<br>
+    Licensed under MIT and GPL
+    </li>
+    <li><strong>TableSorter</strong><br>
+    Christian Bach<br>
+    http://tablesorter.com/<br>
+    Licensed under MIT and GPL
+    </li>
+   
+    <li><strong>jQuery tipsy</strong><br>
+    Copyright Jason Fram<br>
+    http://plugins.jquery.com/project/tipsy<br>
+    MIT license</li>
+    
+    <li><strong>Font awesome</strong><br>
+    Copyright Dave Gandy<br>
+    http://fortawesome.github.com/Font-Awesome/<br>
+    CC v3 license</li>
+    </ul>
+  </div><!-- end div .container -->
+    <div class="container">
+    <p>Once again, <strong>thank you</strong> so much for purchasing this admin template. As stated at the beginning, we'd be glad to help you if you have any questions relating to this theme. We'll do our best to assist. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p><br>
+    <div id="footer_logos"><a href="http://www.webfactoryltd.com/"><img class="footer-logo" src="assets/images/webfactory_logo.png" alt="Web Factory Ltd." /></a><a href="http://themeforest.net/"><img class="footer-logo" src="assets/images/themeforest_logo.png" alt="Themeforest" /></a></div>
+    <p class="footer-totop"><a href="#toc">Go To Table of Contents</a></p>
+   </div><!-- end div .container -->   
+    <script type="text/javascript" src="assets/js/jquery-1.4.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/scripts/shCore.js"></script>
+  <script type="text/javascript" src="assets/js/scripts/shAutoloader.js"></script>
+  <script type="text/javascript" src="assets/js/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" src="assets/js/scripts/shBrushJScript.js"></script>
+  <script type="text/javascript" src="assets/js/scripts/shBrushCss.js"></script>
+  <script type="text/javascript">
+       SyntaxHighlighter.all();
+  </script>
+</body>
+</html>
