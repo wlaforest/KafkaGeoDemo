@@ -20,7 +20,13 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 * Confluent Platform 
 * Node.js
-* Java
+* Java 11 or greater
+* Install KSQLGeo and add extenstion to ksql: https://github.com/wlaforest/KSQLGeo
+
+## Steps To setup project
+1. npm init --yes
+2. npm install request --save
+3. npm install kafkajs
 
 ## Steps To Run Demo.
 
