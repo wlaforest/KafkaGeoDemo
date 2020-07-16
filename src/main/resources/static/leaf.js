@@ -1,5 +1,5 @@
 var uniqueId = stringToHash(navigator.userAgent) + new Date().getTime();
-
+var toggleState = true;
 var colorArray = generateRandomColors(50);
 var map = L.map('mapid', {drawControl: true}).setView([41.85166206156541,  -87.72445678710939], 11);
 
@@ -25,6 +25,16 @@ map.on('pm:create', e => {
   console.log(e);
   sendToServer(JSON.stringify(e.layer.toGeoJSON()));
 });
+
+function toggleButtooHandler()
+{
+  var timage = document.getElementById("toggleImage");
+  if (timage.src.endsWith("images/toggle-on.png")) {
+    timage.src = "images/toggle-off.png";
+  } else {
+    timage.src = "images/toggle-on.png";
+  }
+}
 
 function sendToServer(json)
 {
