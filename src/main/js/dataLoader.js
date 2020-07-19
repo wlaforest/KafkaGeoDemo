@@ -30,13 +30,17 @@ function timerFunc() {
       return;
     }
 
-    console.log("Returned routes: " + JSON.stringify(body["bustime-response"].routes));
-
     for (b of body["bustime-response"].routes) {
       request(baseVehhicleUrl + b.rt, {json: true}, (errv, resv, bodyv) => {
-        var vehicles = bodyv["bustime-response"]["vehicle"];
-        if (vehicles && vehicles.length > 0) {
-          publishToKafka(vehicles, "vid");
+
+        try {
+          var vehicles = bodyv["bustime-response"]["vehicle"];
+          if (vehicles && vehicles.length > 0) {
+            publishToKafka(vehicles, "vid");
+          }
+        }
+        catch(err) {
+          console.log("route response = " + JSON.stringify(bodyv));
         }
       });
     }
