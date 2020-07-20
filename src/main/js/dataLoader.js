@@ -6,8 +6,8 @@ const kafka = new Kafka({
 });
 
 const producer = kafka.producer();
-//vPfbikZwhUMXtJCuhuJqARRBG
-const ctaKey = "wW3a8UQcqJhcireSBnujBAm7e";
+const ctaKey = "vPfbikZwhUMXtJCuhuJqARRBG";
+//const ctaKey = "wW3a8UQcqJhcireSBnujBAm7e";
 const routesUrl = "http://www.ctabustracker.com/bustime/api/v2/getroutes?key=" + ctaKey + "&format=json";
 const baseVehhicleUrl = "http://www.ctabustracker.com/bustime/api/v2/getvehicles?key=" + ctaKey + "&format=json&rt=";
 
