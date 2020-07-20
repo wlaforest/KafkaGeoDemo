@@ -1,3 +1,5 @@
+SET 'auto.offset.reset'='earliest';
+
 CREATE STREAM ALERT
 WITH (KAFKA_TOPIC='alert') AS
 SELECT f.ROWKEY, c.vid, c.lat, c.lon, c.DES, c.RT

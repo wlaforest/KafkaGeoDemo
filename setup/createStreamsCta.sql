@@ -1,3 +1,5 @@
+SET 'auto.offset.reset'='earliest';
+
 CREATE STREAM CTA_RAW
       ( vid INTEGER,
         tmstmp VARCHAR,
@@ -21,7 +23,7 @@ WITH (KAFKA_TOPIC='ctaPrepped', TIMESTAMP='DTIME')
   AS
     SELECT CAST((C.ROWTIME*.1 + 1000000000000) as BIGINT) DTIME,
       1 UNITY,
-      geo_hash(lat,lon,6) geohash,
+      geo_hash(lat,lon,5) geohash,
       *
     FROM CTA_RAW C
     EMIT CHANGES;

@@ -1,3 +1,5 @@
+SET 'auto.offset.reset'='earliest';
+
 CREATE STREAM FENCE_RAW
   (type VARCHAR, "properties" MAP<VARCHAR, VARCHAR>,
    geometry MAP<VARCHAR, VARCHAR>, _raw_data VARCHAR)
