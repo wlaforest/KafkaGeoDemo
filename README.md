@@ -26,11 +26,17 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 From the root directory of the project
 
-1. <code>node src/main/js/dataLoader.js</code> - Let this run until you have hit the maximum requests for a day.
-2. <code>setup/prepare.sh</code> - This will pre-create some of the topics 
-3. In KSQL execute the commands in setup/createStreamsCta.sql 
-4. In KSQL execute the commands in setup/createGeoFences.sql
-5. In KSQL execute the commands in setup/createGeoBins.sql
-6. In KSQL execute the commands in setup/createAlertStream.sql
-7. <code>java -jar jars/KafkaEventService-1.0.0-SNAPSHOT-fat.jar -conf conf/kesConfig.json</code> - This runs the KafkaEventService
-8. In a web browser hit localhost:8080/home.html 
+1. From the project root download the required node.js libraries<br/>
+<code>npm init --yes</code><br/>
+<code>npm install request</code><br/>
+<code>npm install kafkajs</code>
+2. Install the ksqlgeo UDF into the ksqlDB extensions directory. <code>cp jars/ksqlgeo-1.2.1.jar 
+PATH_TO_KSQL_EXTENSION_DIR</code>  
+3. <code>node src/main/js/dataLoader.js</code> - Let this run until you have hit the maximum requests for a day.
+4. <code>setup/prepare.sh</code> - This will pre-create some of the topics 
+5. In KSQL execute the commands in setup/createStreamsCta.sql 
+6. In KSQL execute the commands in setup/createGeoFences.sql
+7. In KSQL execute the commands in setup/createGeoBins.sql
+8. In KSQL execute the commands in setup/createAlertStream.sql
+9. <code>java -jar jars/KafkaEventService-1.0.0-SNAPSHOT-fat.jar -conf conf/kesConfig.json</code> - This runs the KafkaEventService
+10. In a web browser hit localhost:8080/home.html 
