@@ -33,7 +33,7 @@ From the root directory of the project
 2. Install the ksqlgeo UDF into the ksqlDB extensions directory. <code>cp jars/ksqlgeo-1.2.1.jar 
 PATH_TO_KSQL_EXTENSION_DIR</code>  
 3. <code>node src/main/js/dataLoader.js</code> - Let this run until you have hit the maximum requests for a day.
-4. <code>setup/prepare.sh</code> - This will pre-create some of the topics 
+4. <code>setup/preTopics.sh</code> - This will pre-create some of the topics 
 5. In KSQL execute the commands in setup/createStreamsCta.sql 
 6. In KSQL execute the commands in setup/createGeoFences.sql
 7. In KSQL execute the commands in setup/createGeoBins.sql
