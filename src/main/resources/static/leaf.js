@@ -1,20 +1,26 @@
+const maxBinValue = 465;
+const configViewLat = 41.85166206156541;
+const configViewLon = -87.72445678710939;
+const configZoomLevel = 11;
+const configMapBoxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
 var uniqueId = stringToHash(navigator.userAgent) + new Date().getTime();
 var colorArray = generateRandomColors(50);
-var map = L.map('mapid', {drawControl: true}).setView([41.85166206156541,  -87.72445678710939], 11);
+var map = L.map('mapid', {drawControl: true}).setView([configViewLat, configViewLon ], configZoomLevel);
 var polyLines = {};
 var bins = {};
 var showLines = true;
-const maxBinValue = 465;
 
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + configMapBoxToken, {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1
-  }).addTo(map);
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1
+}).addTo(map);
 
 // add leaflet-geoman controls with some options to the map
 map.pm.addControls({
@@ -28,7 +34,6 @@ map.on('pm:create', e => {
   console.log(e);
   sendToServer(JSON.stringify(e.layer.toGeoJSON()));
 });
-
 
 function toggleButtonHandler()
 {
@@ -69,7 +74,7 @@ busSource.addEventListener('message', function(e){
   if ( polyLine == null) {
     var lineColor = colorArray[(id % colorArray.length)-1];
     var pointList = [[obj.LAT, obj.LON]]
-    var polyLine = L.polyline(pointList, {
+    polyLine = L.polyline(pointList, {
       color: lineColor,
       weight: 3,
       smoothFactor: 1
