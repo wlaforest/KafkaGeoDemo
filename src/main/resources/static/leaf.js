@@ -1,8 +1,11 @@
-const maxBinValue = 465;
-const configViewLat = 41.85166206156541;
-const configViewLon = -87.72445678710939;
+const maxBinValue = 50;
+const configViewLat = 38.8950;
+const configViewLon = -77.0533;
 const configZoomLevel = 11;
 const configMapBoxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+const configLatKey = "LAT";
+const configLonKey = "LON";
+const configIdKey = "VEHICLEID";
 
 var uniqueId = stringToHash(navigator.userAgent) + new Date().getTime();
 var colorArray = generateRandomColors(50);
@@ -65,15 +68,15 @@ function sendToServer(json)
   xhr.send(json);
 }
 
-var busSource = new EventSource('/topics/ctaPrepped/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000'); //ENTER YOUR TOPICNAME HERE
+var busSource = new EventSource('/topics/busPrepped/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000'); //ENTER YOUR TOPICNAME HERE
 busSource.addEventListener('message', function(e){
 
   var obj = JSON.parse(e.data);
-  var id = obj.VID
+  var id = obj[configIdKey];
   var polyLine = polyLines[id];
   if ( polyLine == null) {
     var lineColor = colorArray[(id % colorArray.length)-1];
-    var pointList = [[obj.LAT, obj.LON]]
+    var pointList = [[obj[configLatKey], obj[configLonKey]]];
     polyLine = L.polyline(pointList, {
       color: lineColor,
       weight: 3,
@@ -84,7 +87,8 @@ busSource.addEventListener('message', function(e){
   }
   else
   {
-    polyLine.addLatLng([obj.LAT, obj.LON]);
+
+    polyLine.addLatLng([obj[configLatKey], obj[configLonKey]]);
   }
 }, false);
 
@@ -111,7 +115,6 @@ binSource.addEventListener('message', function(e) {
   var boxCoordsString = JSON.stringify(boxCoords)
   var boxColor = perc2color(obj.TOTAL, 0, maxBinValue); //getColorFromRedToGreenByPercentage(obj.TOTAL, 959);
   var currentBin = bins[boxCoordsString];
-  console.log('recieved bin: ' + JSON.stringify(obj) + " color = " + boxColor);
   if (currentBin == null)
   {
     var bounds = [ [boxCoords[0], boxCoords[1]], [boxCoords[2], boxCoords[3]] ];
