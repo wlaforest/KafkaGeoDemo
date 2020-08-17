@@ -33,10 +33,12 @@ From the root directory of the project
 2. Install the ksqlgeo UDF into the ksqlDB extensions directory. <code>cp jars/ksqlgeo-1.2.1.jar 
 PATH_TO_KSQL_EXTENSION_DIR</code>  
 3. <code>node src/main/js/dataLoader.js</code> - Let this run until you have hit the maximum requests for a day.
-4. <code>setup/preTopics.sh</code> - This will pre-create some of the topics 
-5. In KSQL execute the commands in setup/createStreamsCta.sql 
-6. In KSQL execute the commands in setup/createGeoFences.sql
-7. In KSQL execute the commands in setup/createGeoBins.sql
-8. In KSQL execute the commands in setup/createAlertStream.sql
-9. <code>java -jar jars/KafkaEventService-1.0.0-SNAPSHOT-fat.jar -conf conf/kesConfig.json</code> - This runs the KafkaEventService
+4. <code>setup/preTopics.sh</code> - This will pre-create some of the topics
+5. Either run <code>setup/prepKsql.sh</code> to precreate all the ksql streams and tables OR 
+manually walk through building it out by running each ksql query in steps 6-8 
+5. In KSQL execute the commands in <code>setup/createBusStreams.sql</code> 
+6. In KSQL execute the commands in <code>setup/createGeoFences.sql</code>
+7. In KSQL execute the commands in <code>setup/createGeoBins.sql</code>
+8. In KSQL execute the commands in <code>setup/createAlertStream.sql</code>
+9. <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code> - This runs the KafkaEventService
 10. In a web browser hit localhost:8080/home.html 
