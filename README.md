@@ -33,7 +33,7 @@ From the root directory of the project
 <code>npm install kafkajs</code>
 2. Install the ksqlgeo UDF into the ksqlDB extensions directory. <code>cp jars/ksqlgeo-1.2.1.jar 
 PATH_TO_KSQL_EXTENSION_DIR</code>  
-3. <code>node src/main/js/dataLoader.js</code> - Let this run until you have hit the maximum requests for a day.
+3. <code>node src/main/js/dataLoaderWmata.js</code> - Let this run until you have hit the maximum requests for a day.
 4. <code>setup/preTopics.sh</code> - This will pre-create some of the topics
 5. Either run <code>setup/prepKsql.sh</code> to precreate all the ksql streams and tables OR 
 manually walk through building it out by running each ksql query in steps 6-8 
