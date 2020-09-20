@@ -1,5 +1,5 @@
-ksql < setup/createGeoFence.sql
-ksql < setup/createBusStream.sql
-ksql < setup/createGeoBins.sql
-ksql < setup/createAlertStream.sql
-ksql < setup/calibration.sql
+ksql < ksql/createGeoFence.sql
+ksql < ksql/createBusStream.sql
+ksql < ksql/createGeoBins.sql
+ksql < ksql/createAlertStream.sql
+ksql < ksql/calibration.sql
