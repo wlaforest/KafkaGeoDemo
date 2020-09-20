@@ -1,5 +1,5 @@
 {
-  "name": "cta-source",
+  "name": "bus-source",
   "config": {
     "connector.class": "FileStreamSource",
     "tasks.max": "1",

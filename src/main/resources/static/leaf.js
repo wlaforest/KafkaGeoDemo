@@ -68,7 +68,7 @@ function sendToServer(json)
   xhr.send(json);
 }
 
-var busSource = new EventSource('/topics/busPrepped/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000'); //ENTER YOUR TOPICNAME HERE
+var busSource = new EventSource('/topics/bus_prepped/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000'); //ENTER YOUR TOPICNAME HERE
 busSource.addEventListener('message', function(e){
 
   var obj = JSON.parse(e.data);

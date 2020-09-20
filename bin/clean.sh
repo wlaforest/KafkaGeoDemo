@@ -22,4 +22,4 @@ curl -s -X "POST" "http://localhost:8088/ksql" \
              -H "Content-Type: application/vnd.ksql.v1+json; charset=utf-8" \
              -d '{"ksql": "DROP TABLE 'foo';"}'
 
-kafka-topics --bootstrap-server localhost:9092 --delete --topic busPrepped,alert,fence_raw,fence,GEO_HEAT_MAP,MAX_BIN_COUNT
+kafka-topics --bootstrap-server localhost:9092 --delete --topic bus_raw,bus_prepped,alert,fence_raw,fence,GEO_HEAT_MAP,MAX_BIN_COUNT
