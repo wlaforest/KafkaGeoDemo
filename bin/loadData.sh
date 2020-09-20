@@ -1,1 +1,1 @@
-cat data/wmata.csv | kafka-console-producer --bootstrap-server localhost:9092 --topic bus_raw > /dev/null
+tar -Oxzf data/wmata.csv.tgz | kafka-console-producer --bootstrap-server localhost:9092 --topic bus_raw > /dev/null
