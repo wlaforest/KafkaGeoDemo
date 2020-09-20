@@ -21,7 +21,7 @@ WITH
 CREATE STREAM BUS
 WITH (KAFKA_TOPIC='busPrepped') AS
     SELECT CAST((b.ROWTIME - STRINGTOTIMESTAMP(TIMESTAMPTOSTRING(b.ROWTIME, 'yyyy-MM-dd'), 'yyyy-MM-dd'))*.1 +
-                STRINGTOTIMESTAMP(TIMESTAMPTOSTRING(b.ROWTIME, 'yyyy-MM-dd'), 'yyyy-MM-dd') as BIGINT)DTIME, 1 UNITY,
+                UNIX_TIMESTAMP() - 86400000 AS BIGINT) DTIME, 1 UNITY,
             geo_hash(Lat,Lon,5) geohash, *
     FROM BUS_RAW b
     EMIT CHANGES;
