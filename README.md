@@ -25,21 +25,28 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 ## Steps To Run Demo.
 
-From the root directory of the project
+This demo assumes that you have Confluent Platform running on your local machine with the default ports.  If not you 
+can download it and find installation instructions at https://www.confluent.io/download/  
 
-1. From the project root download the required node.js libraries<br/>
-<code>npm init --yes</code><br/>
-<code>npm install request</code><br/>
-<code>npm install kafkajs</code>
-2. Install the ksqlgeo UDF into the ksqlDB extensions directory. <code>cp jars/ksqlgeo-1.2.1.jar 
-PATH_TO_KSQL_EXTENSION_DIR</code>  
-3. <code>node src/main/js/dataLoaderWmata.js</code> - Let this run until you have hit the maximum requests for a day.
-4. <code>setup/preTopics.sh</code> - This will pre-create some of the topics
-5. Either run <code>setup/prepKsql.sh</code> to precreate all the ksql streams and tables OR 
-manually walk through building it out by running each ksql query in steps 6-8 
-5. In KSQL execute the commands in <code>setup/createBusStreams.sql</code> 
-6. In KSQL execute the commands in <code>setup/createGeoFences.sql</code>
-7. In KSQL execute the commands in <code>setup/createGeoBins.sql</code>
-8. In KSQL execute the commands in <code>setup/createAlertStream.sql</code>
-9. <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code> - This runs the KafkaEventService
-10. In a web browser hit localhost:8080/home.html 
+From the root directory of the project 
+
+1. run <code>start.sh</code> 
+2. In a web browser goto localhost:8080/home.html
+
+The start script prepares the topics, load the data, and creats the ksqlDB processing pipeline.  One can kill the
+launched service when you are done with <code>^c</code>
+
+It is more intructive to create the ksqlDB pipeline manually.  This can be done with the following steps:
+
+1. run <code>bin/prepTopics.sh</code>
+2. run <code>bin/loadData.sh</code>
+3. run each of the KSQL commands in the same order seen in bin/prepKsql.sh.  This can be done on the command line with 
+a command like <code>ksql < ksql/createGeoFence.sql</code> or you can copy and past the contents into the ksql console
+confluent control center at http://localhost:9021/ or by executing <code>ksql</code> from the command line and going
+interactive mode.
+
+After you are done you can clean all the demo state by running <code>bin/clean.sh</code>
+
+
+
+ 
