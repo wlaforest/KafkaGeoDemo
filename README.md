@@ -20,8 +20,7 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 ## Requirements
 
 * Confluent Platform 
-* Node.js
-* Java
+* Java 11 or higher
 
 ## Steps To Run Demo.
 
@@ -36,14 +35,14 @@ From the root directory of the project
 The start script prepares the topics, load the data, and creats the ksqlDB processing pipeline.  One can kill the
 launched service when you are done with <code>^c</code>
 
-It is more intructive to create the ksqlDB pipeline manually.  This can be done with the following steps:
+It is more instructive to create the ksqlDB pipeline manually.  This can be done with the following steps:
 
 1. run <code>bin/prepTopics.sh</code>
-2. run <code>bin/loadData.sh</code>
-3. run each of the KSQL commands in the same order seen in bin/prepKsql.sh.  This can be done on the command line with 
+2. run each of the KSQL commands in the same order seen in bin/prepKsql.sh.  This can be done on the command line with 
 a command like <code>ksql < ksql/createGeoFence.sql</code> or you can copy and past the contents into the ksql console
 confluent control center at http://localhost:9021/ or by executing <code>ksql</code> from the command line and going
 interactive mode.
+3. run <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code>
 
 After you are done you can clean all the demo state by running <code>bin/clean.sh</code>
 
