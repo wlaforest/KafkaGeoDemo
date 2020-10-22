@@ -19,7 +19,7 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 ## Requirements
 
-* Confluent Platform 
+* Confluent Platform 5.5 - (should be easy to adapt for 6.0 but there are some slight differences in ksqlDB that makes the queries incompatible
 * Java 11 or higher
 
 ## Steps To Run Demo.
@@ -27,7 +27,7 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 This demo assumes that you have Confluent Platform running on your local machine with the default ports.  If not you 
 can download it and find installation instructions at https://www.confluent.io/download/  
 
-###Install the geospatial UDF
+### Install the geospatial UDF
 From the root directory of the project 
 
 Assuming the Confluent Platform is installed as a tarball and that <code>CONFLUENT_HOME</code> is set you can run the 
@@ -35,7 +35,7 @@ following command <code>install-geo-udf.sh</code>.  This two line command assume
 <code>ksql.extension.dir</code> variable in your <code>ksql-server.properties</code>.  If you have then you can manually
 install <code>jars/ksqlgeo-1.2.1.jar</code>.
 
-###Run the demo
+### Run the demo
 From the root directory of the project 
  
 1. run <code>start.sh</code> 
