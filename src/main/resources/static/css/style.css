@@ -1272,9 +1272,11 @@ h3.add-new img, h3.table-options img {
 	border-radius:0 0 3px 3px;
 	-moz-border-radius:0 0 3px 3px;
 	-webkit-border-radius:0 0 3px 3px;
-	padding:0 6px 0 19px;
+	padding:0 6px 0 32px;
 	min-height:45px;
 	margin-bottom:15px;
+	margin-left:0px;
+	width:900px;
 	clear:both;
 }
 

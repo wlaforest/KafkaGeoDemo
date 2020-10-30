@@ -1,0 +1,11 @@
+{
+  "name": "bus-source",
+  "config": {
+    "connector.class": "FileStreamSource",
+    "tasks.max": "1",
+    "file": "/tmp/WmataDemoData.txt",
+    "topic": "bus2",
+    "key.converter":"org.apache.kafka.connect.storage.StringConverter",
+    "value.converter":"org.apache.kafka.connect.storage.StringConverter"
+  }
+}

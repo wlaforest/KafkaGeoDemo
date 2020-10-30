@@ -1,0 +1,1 @@
+kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --topic bus --timeout-ms 1000 > data/wmata.csv
