@@ -21,6 +21,7 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 * Confluent Platform 5.5 - (should be easy to adapt for 6.0 but there are some slight differences in ksqlDB that makes the queries incompatible
 * Java 11 or higher
+* Node.js (optional if you want to load your own data)
 
 ## Steps To Run Demo.
 
@@ -54,6 +55,15 @@ interactive mode.
 3. run <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code>
 
 After you are done you can clean all the demo state by running <code>bin/clean.sh</code>
+
+## Optional Steps 
+If you with to run the data loader yourself you will need to install node.js and then run the following
+
+1. npm init --yes
+2. npm install request --save
+3. npm install kafkajs
+
+
 
 
 
