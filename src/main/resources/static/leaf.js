@@ -1,19 +1,46 @@
+console.log("loaded leaf.js");
+
+//  The maximum number of vertices in a path.  How many points do you want on the tail.
+const maxPathLength = 20;
+
+//  The maximum value for calculating the color gradiant.
 const maxBinValue = 50;
+
+// Starting lat lon for the view
 const configViewLat = 38.8950;
 const configViewLon = -77.0533;
+
+// starting zoom level
 const configZoomLevel = 11;
+
+// MapBox API ket
 const configMapBoxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+// name of the Vehicle topic
+const configVehicleTopic = "bus_prepped";
+
+// name of geohash bins topic
+const configBinTopic  = "GEO_HEAT_MAP";
+
+// name of the alert topic
+const configAlertTopic  = "alert";
+
+// Keys for the returned data from kafka.
 const configLatKey = "LAT";
 const configLonKey = "LON";
 const configIdKey = "VEHICLEID";
+
+// Done config variables -----------------------------------------------------------------------------------------
 
 var uniqueId = stringToHash(navigator.userAgent) + new Date().getTime();
 var colorArray = generateRandomColors(50);
 var map = L.map('mapid', {drawControl: true}).setView([configViewLat, configViewLon ], configZoomLevel);
 var polyLines = {};
+var latLonArrays = {};
 var bins = {};
 var showLines = true;
 
+console.log("Loading leaflet layer");
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + configMapBoxToken, {
   maxZoom: 18,
@@ -37,6 +64,8 @@ map.on('pm:create', e => {
   console.log(e);
   sendToServer(JSON.stringify(e.layer.toGeoJSON()));
 });
+
+console.log("finished setting up leaflet objects");
 
 function toggleButtonHandler()
 {
@@ -68,15 +97,27 @@ function sendToServer(json)
   xhr.send(json);
 }
 
-var busSource = new EventSource('/topics/bus_prepped/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000'); //ENTER YOUR TOPICNAME HERE
+console.log("Creating event source");
+var busSourceUrl = '/topics/' + configVehicleTopic + '/sse?requestId=' + uniqueId + '&jsonSyncPath=$.DTIME&period=1000';
+var busSource = new EventSource(busSourceUrl);
 busSource.addEventListener('message', function(e){
 
+  console.log("in event listener for vehicle path");
   var obj = JSON.parse(e.data);
   var id = obj[configIdKey];
   var polyLine = polyLines[id];
-  if ( polyLine == null) {
+  var pointList = latLonArrays[id];
+  if ( pointList == null) {
+    // determine the line color based on a mod on the color array
     var lineColor = colorArray[(id % colorArray.length)-1];
-    var pointList = [[obj[configLatKey], obj[configLonKey]]];
+
+    // created a fixed length array of lat-lon's
+    var pointList = getArrayWithLimitedLength(maxPathLength);
+
+    // save the fixed length lat lon correlated to object id
+    latLonArrays[id] = pointList;
+
+    pointList.push([obj[configLatKey], obj[configLonKey]]);
     polyLine = L.polyline(pointList, {
       color: lineColor,
       weight: 3,
@@ -87,12 +128,12 @@ busSource.addEventListener('message', function(e){
   }
   else
   {
-
-    polyLine.addLatLng([obj[configLatKey], obj[configLonKey]]);
+    pointList.push([obj[configLatKey], obj[configLonKey]]);
+    polyLine.setLatLngs(pointList);
   }
 }, false);
 
-var alertSource = new EventSource('/topics/alert/sse?requestId=' + uniqueId + '&period=1000');
+var alertSource = new EventSource('/topics/' + configAlertTopic + '/sse?requestId=' + uniqueId + '&period=1000');
 alertSource.addEventListener('message', function(e) {
   var obj = JSON.parse(e.data);
   console.log('recieved alert: ' + JSON.stringify(obj));
@@ -107,7 +148,7 @@ alertSource.addEventListener('message', function(e) {
 
 }, false);
 
-var binSource = new EventSource('/topics/GEO_HEAT_MAP/sse?requestId=' + uniqueId + '&jsonSyncPath=$.WS&period=1000');
+var binSource = new EventSource('/topics/' + configBinTopic + '/sse?requestId=' + uniqueId + '&jsonSyncPath=$.WS&period=1000');
 binSource.addEventListener('message', function(e) {
   var obj = JSON.parse(e.data);
 
