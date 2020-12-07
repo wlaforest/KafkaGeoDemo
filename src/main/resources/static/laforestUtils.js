@@ -252,3 +252,17 @@ function perc2color(iperc,min,max) {
     var h = r * 0x10000 + g * 0x100 + b * 0x1;
     return '#' + ('000000' + h.toString(16)).slice(-6);
 }
+
+function getArrayWithLimitedLength(length) {
+    var array = new Array();
+
+    array.push = function () {
+        if (this.length >= length) {
+            this.shift();
+        }
+        return Array.prototype.push.apply(this,arguments);
+    }
+
+    return array;
+
+}
