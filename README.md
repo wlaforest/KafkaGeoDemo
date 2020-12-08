@@ -19,15 +19,16 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 ## Requirements
 
-* Confluent Platform 
+* Confluent Platform 5.5 - (should be easy to adapt for 6.0 but there are some slight differences in ksqlDB that makes the queries incompatible
 * Java 11 or higher
+* Node.js (optional if you want to load your own data)
 
 ## Steps To Run Demo.
 
 This demo assumes that you have Confluent Platform running on your local machine with the default ports.  If not you 
 can download it and find installation instructions at https://www.confluent.io/download/  
 
-###Install the geospatial UDF
+### Install the geospatial UDF
 From the root directory of the project 
 
 Assuming the Confluent Platform is installed as a tarball and that <code>CONFLUENT_HOME</code> is set you can run the 
@@ -35,7 +36,7 @@ following command <code>install-geo-udf.sh</code>.  This two line command assume
 <code>ksql.extension.dir</code> variable in your <code>ksql-server.properties</code>.  If you have then you can manually
 install <code>jars/ksqlgeo-1.2.1.jar</code>.
 
-###Run the demo
+### Run the demo
 From the root directory of the project 
  
 1. run <code>start.sh</code> 
@@ -54,6 +55,15 @@ interactive mode.
 3. run <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code>
 
 After you are done you can clean all the demo state by running <code>bin/clean.sh</code>
+
+## Optional Steps 
+If you with to run the data loader yourself you will need to install node.js and then run the following
+
+1. npm init --yes
+2. npm install request --save
+3. npm install kafkajs
+
+
 
 
 
