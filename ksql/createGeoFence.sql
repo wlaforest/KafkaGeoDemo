@@ -1,7 +1,7 @@
 SET 'auto.offset.reset'='earliest';
 
 CREATE STREAM FENCE_RAW
-  (type VARCHAR, "properties" MAP<VARCHAR, VARCHAR>,
+  (ROWKEY VARCHAR KEY, type VARCHAR, "properties" MAP<VARCHAR, VARCHAR>,
    geometry MAP<VARCHAR, VARCHAR>, _raw_data VARCHAR)
 WITH
   (kafka_topic='fence_raw', value_format='JSON', PARTITIONS=1);
