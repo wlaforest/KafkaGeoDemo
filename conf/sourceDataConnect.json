@@ -3,8 +3,8 @@
   "config": {
     "connector.class": "FileStreamSource",
     "tasks.max": "1",
-    "file": "/tmp/WmataDemoData.txt",
-    "topic": "bus2",
+    "file": "/tmp/wmata.txt",
+    "topic": "bus_raw",
     "key.converter":"org.apache.kafka.connect.storage.StringConverter",
     "value.converter":"org.apache.kafka.connect.storage.StringConverter"
   }
