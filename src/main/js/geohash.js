@@ -491,6 +491,44 @@ var bboxes_int = function(minLat, minLon, maxLat, maxLon, bitDepth){
     return hashList;
 };
 
+var geohash_to_geojson = function(geohashes)
+{
+
+    var startOfFeatureList =
+        '{\n' +
+        '  "type": "FeatureCollection",\n' +
+        '  "features": \n' +
+        '  [\n';
+
+    var retval = startOfFeatureList;
+
+    for (var i = 0; i< geohashes.length; i++)
+    {
+        var bbox = decode_bbox(geohashes[i]);
+
+        retval = retval +
+            '    {\n' +
+            '      "type": "Feature",\n' +
+            '      "properties": {},\n' +
+            '      "geometry":\n'+
+            '        {\n'+
+            '          "type":"Polygon",\n'+
+            '          "coordinates":[[[' + bbox[0] + "," + bbox[1] + "],[" + bbox[2] + "," + bbox[1] +
+        "],[" + bbox[2] + "," + bbox[3] + "],[" + bbox[0] + "," + bbox[3] + '],[' + bbox[0] + "," + bbox[1] + ']]]\n' +
+            '        }\n'+
+            '    }';
+
+        if (i != geohashes.length - 1)
+        {
+            retval = retval + ",\n"
+        }
+    }
+
+    retval = retval + '\n  ] \n}';
+    return retval
+
+}
+
 exports.geohash = {
   'ENCODE_AUTO': ENCODE_AUTO,
   'encode': encode,
@@ -507,7 +545,8 @@ exports.geohash = {
   'neighbors': neighbors,
   'neighbors_int': neighbors_int,
   'bboxes': bboxes,
-  'bboxes_int': bboxes_int
+  'bboxes_int': bboxes_int,
+  'geohash_to_geojson': geohash_to_geojson
 };
 
 //window.geohash = geohash;
