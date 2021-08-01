@@ -4,7 +4,7 @@ This repo has a demonstration of the KSQLGeo UDF.  The data presently in this de
 adapated from other data like from Chicago Transit Authority (CTA). This demonstration provides a node.js script that 
 queries the REST API WMATA provides (and one for CTA) and publishes it into Kafka.  That data will then be pre-processed 
 in KSQL to transform it slightly and enrich with a geo hash.  One of the transformations is to speed the timeline up 10X 
-to make the routes draw more rapidly so its more interesting.  The geo hash is calculated using the geo_hash() UDF 
+to make the routes draw more rapidly so its more interesting.  The geo hash is calculated using the geo_geohash() UDF 
 function.
 
 This data is then served up to a webapp built using the javascript mapping library Leaflet through an event rest service
