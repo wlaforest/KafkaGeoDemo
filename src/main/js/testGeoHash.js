@@ -1,7 +1,4 @@
 var gh = require('./geohash.js');
 
-console.log(gh);
-
-console.log("foo");
-console.log(gh.geohash.decode_bbox('dp3wjh76'));
+console.log(gh.geohash.geohash_to_geojson(['hf78j', 'hf78m', 'hf78t']));
 
