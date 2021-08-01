@@ -19,7 +19,7 @@ The map also displays bus densities based off a KSQL aggregated on the geo hashe
 
 ## Requirements
 
-* Confluent Platform 5.5 - (should be easy to adapt for 6.0 but there are some slight differences in ksqlDB that makes the queries incompatible
+* Confluent Platform 6.0
 * Java 11 or higher
 * Node.js (optional if you want to load your own data)
 
