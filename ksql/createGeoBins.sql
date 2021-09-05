@@ -1,14 +1,14 @@
 SET 'auto.offset.reset'='earliest';
 
-CREATE TABLE geo_heat_map AS
-  SELECT
-    windowstart ws,
-    windowend we,
-    geohash rowkey,
-    AS_VALUE(geohash) as geohash,
-    COUNT(*) total
-  FROM  bus
-  WINDOW HOPPING (SIZE 30 SECONDS, ADVANCE BY 10 SECONDS)
-  GROUP BY geohash
+CREATE TABLE GEO_HEAT_MAP WITH (KAFKA_TOPIC='GEO_HEAT_MAP', PARTITIONS=1, REPLICAS=1)
+  AS SELECT
+    WINDOWSTART WS,
+    WINDOWEND WE,
+    BUS.GEOHASH GEOHASH,
+    AS_VALUE(BUS.GEOHASH) GH,
+    COUNT(*) TOTAL
+  FROM BUS BUS
+  WINDOW HOPPING ( SIZE 30 SECONDS , ADVANCE BY 10 SECONDS )
+  GROUP BY BUS.GEOHASH
   EMIT CHANGES;
 
