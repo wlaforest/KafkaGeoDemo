@@ -16,13 +16,15 @@ CREATE STREAM BUS_RAW
     BlockNumber VARCHAR,
     LoadTime BIGINT)
 WITH
-    (KAFKA_TOPIC='bus_raw', VALUE_FORMAT='JSON', TIMESTAMP='LoadTime', PARTITIONS=1, REPLICAS=1);
+    (KAFKA_TOPIC='bus_raw', VALUE_FORMAT='JSON', TIMESTAMP='LoadTime');
+
 
 CREATE STREAM BUS
-WITH (KAFKA_TOPIC='bus_prepped', TIMESTAMP='DTIME') AS
-    SELECT CAST((b.ROWTIME - STRINGTOTIMESTAMP(TIMESTAMPTOSTRING(b.ROWTIME, 'yyyy-MM-dd'), 'yyyy-MM-dd'))*.1 +
-                UNIX_TIMESTAMP() - 86400000 AS BIGINT) DTIME, 1 UNITY,
-            geo_geohash(Lat,Lon,5) geohash, *
+WITH (KAFKA_TOPIC='bus_prepped', TIMESTAMP='DTIME', PARTITIONS=1, REPLICAS=1) AS
+    SELECT
+      CAST((b.ROWTIME - STRINGTOTIMESTAMP(TIMESTAMPTOSTRING(b.ROWTIME, 'yyyy-MM-dd'), 'yyyy-MM-dd'))*.1 +
+                UNIX_TIMESTAMP() - 86400000 AS BIGINT) DTIME, as_value(geo_geohash(Lat,Lon,5)) GEOHASH,
+      *
     FROM BUS_RAW b
+    PARTITION BY geo_geohash(Lat,Lon,5)
     EMIT CHANGES;
-

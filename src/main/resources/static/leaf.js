@@ -152,7 +152,7 @@ var binSource = new EventSource('/topics/' + configBinTopic + '/sse?requestId=' 
 binSource.addEventListener('message', function(e) {
   var obj = JSON.parse(e.data);
 
-  var boxCoords = decode_bbox(obj.GEOHASH)
+  var boxCoords = decode_bbox(obj.GH)
   var boxCoordsString = JSON.stringify(boxCoords)
   var boxColor = perc2color(obj.TOTAL, 0, maxBinValue); //getColorFromRedToGreenByPercentage(obj.TOTAL, 959);
   var currentBin = bins[boxCoordsString];
