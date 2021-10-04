@@ -15,7 +15,8 @@ KafkaEventService which publishes them into a Kafka topic.  The geo_fence topic 
 find instances when buses have entered the fences.
 
 The map also displays bus densities based off a KSQL aggregated on the geo hashes.
- 
+
+<img width="966" alt="Screen Shot 2021-10-04 at 9 35 13 AM" src="https://user-images.githubusercontent.com/1627780/135860931-8d887f14-9285-4f72-ada1-8a88f02ce384.png">
 
 ## Requirements
 
