@@ -1,5 +1,6 @@
 # Walk through of constructing the app
 
+Before starting the walk through run prep topics 
 
 * wmata rest service
   * Show what the WMATA services returns
@@ -24,13 +25,18 @@
 * Load the pre-saved data with bin/wmataSourceFileStreamConnector.sh
   * explain that we are going to use the filestream connector
   * show data in topic
-  * show that there is no schema in the schema registry
 * Walk through and execute queries 
   * [ksql/1-createBusStream.sql](ksql/1-createBusStream.sql)
+    * Query the stream in ksql
   * [ksql/2-createGeoFence.sql](ksql/2-createGeoFence.sql)
   * [ksql/3-createGeoBins.sql](ksql/3-createGeoBins.sql)
+    * Query the table
   * [ksql/4-createAlertStream.sql](ksql/4-createAlertStream.sql)
+* Go back and show the topics
+  * bus_prepped
+  * show there is nothing in the fence
 * execute the vert.x app by running run.sh
 * goto to http://localhost:8080/home.html
-
+  * Demo app
+* Go back and show the fence and alert topic
 
