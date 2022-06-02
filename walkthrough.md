@@ -4,17 +4,16 @@ Before starting the walk through run prep topics
 
 * wmata rest service
   * Show what the WMATA services returns
-  * It updates onces every 10 seconds and is providing data for all buses
+  * It updates once every 10 seconds and is providing data for all buses
   * We need to ingest and could use custom code but instead will use a connector
+  * Show Connect Hub and explain
 * C3
-  * Bring up C3
   * This is a console for Confluent Platform
   * Brief walk through
-* Connect
-  * show Confluent Hub
-  * No running connectors
-  * could manually add one with the UI
-  * instead we will use the connect API to spin up the RestSource source connector
+  * No connectors running
+  * Could spin up the rest source connector here
+* Launch connector through API
+  * Open terminal 
   * show [bin/wmataSourceRestConnector.sh](bin/wmataSourceRestConnector.sh)
   * run bin/wmataSourceRestConnector.sh
 * Show wmata topic
