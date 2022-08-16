@@ -21,6 +21,7 @@ const configVehicleTopic = "bus_prepped";
 
 // name of geohash bins topic
 const configBinTopic  = "GEO_HEAT_MAP";
+const configGeoHash = "GH"
 
 // name of the alert topic
 const configAlertTopic  = "alert";
@@ -112,7 +113,7 @@ busSource.addEventListener('message', function(e){
     var lineColor = colorArray[(id % colorArray.length)-1];
 
     // created a fixed length array of lat-lon's
-    var pointList = getArrayWithLimitedLength(maxPathLength);
+    pointList = getArrayWithLimitedLength(maxPathLength);
 
     // save the fixed length lat lon correlated to object id
     latLonArrays[id] = pointList;
@@ -152,7 +153,7 @@ var binSource = new EventSource('/topics/' + configBinTopic + '/sse?requestId=' 
 binSource.addEventListener('message', function(e) {
   var obj = JSON.parse(e.data);
 
-  var boxCoords = decode_bbox(obj.GEOHASH)
+  var boxCoords = decode_bbox(obj[configGeoHash])
   var boxCoordsString = JSON.stringify(boxCoords)
   var boxColor = perc2color(obj.TOTAL, 0, maxBinValue); //getColorFromRedToGreenByPercentage(obj.TOTAL, 959);
   var currentBin = bins[boxCoordsString];
