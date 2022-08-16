@@ -50,7 +50,7 @@ It is more instructive to create the ksqlDB pipeline manually.  This can be done
 
 1. run <code>bin/prepTopics.sh</code>
 2. run each of the KSQL commands in the same order seen in bin/prepKsql.sh.  This can be done on the command line with 
-a command like <code>ksql < ksql/createGeoFence.sql</code> or you can copy and past the contents into the ksql console
+a command like <code>ksql < ksql/2-createGeoFence.sql</code> or you can copy and past the contents into the ksql console
 confluent control center at http://localhost:9021/ or by executing <code>ksql</code> from the command line and going
 interactive mode.
 3. run <code>java -jar jars/KafkaEventService-1.0.1-fat.jar -conf conf/kesConfig.json</code>

@@ -1,5 +1,5 @@
-ksql < ksql/createBusStream.sql
-ksql < ksql/createGeoFence.sql
-ksql < ksql/createGeoBins.sql
-ksql < ksql/createAlertStream.sql
+ksql < ksql/1-createBusStream.sql
+ksql < ksql/2-createGeoFence.sql
+ksql < ksql/3-createGeoBins.sql
+ksql < ksql/4-createAlertStream.sql
 
