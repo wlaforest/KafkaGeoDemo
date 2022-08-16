@@ -15,7 +15,8 @@ KafkaEventService which publishes them into a Kafka topic.  The geo_fence topic 
 find instances when buses have entered the fences.
 
 The map also displays bus densities based off a KSQL aggregated on the geo hashes.
- 
+
+<img width="966" alt="Screen Shot 2021-10-04 at 9 35 13 AM" src="https://user-images.githubusercontent.com/1627780/135860931-8d887f14-9285-4f72-ada1-8a88f02ce384.png">
 
 ## Requirements
 
@@ -34,7 +35,7 @@ From the root directory of the project
 Assuming the Confluent Platform is installed as a tarball and that <code>CONFLUENT_HOME</code> is set you can run the 
 following command <code>bin/install-geo-udf.sh</code>.  This two line command assumes you have not set the 
 <code>ksql.extension.dir</code> variable in your <code>ksql-server.properties</code>.  If you have then you can manually
-install <code>jars/ksqlgeo-1.2.1.jar</code>.
+install <code>jars/ksqlgeo-1.3.1.jar</code>.
 
 ### Run the demo
 From the root directory of the project 
