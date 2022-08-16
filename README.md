@@ -8,8 +8,8 @@ in KSQL to transform it and enrich it with a geo hash.  One of the transformatio
 to make the routes draw more rapidly so its more to watch in the user interface.  The geo hash is calculated using the 
 geo_geohash() UDF in the geo library found in the [KSQLGeo](https://github.com/wlaforest/KSQLGeo) repo.
 
-This data is then served up to a webapp built using the javascript mapping library Leaflet through an event rest service
-that sits in front of Kafka ([KafkaEventService](https://github.com/wlaforest/KafkaEventService).  The KafkaEventService 
+This data is then served up to a webapp built using the javascript mapping library Leaflet through an event rest service ([KafkaEventService](https://github.com/wlaforest/KafkaEventService))
+that sits in front of Kafka.  The KafkaEventService 
 is a vert.x web app and, in addition to proxying access to Kafka events via SSE, it allows you to serve up static 
 content (in this case the demo app). The web app interface allows one to define shapes on the map that represent 
 geo fences.  Those geo fences are sent to the KafkaEventService which publishes them into a Kafka topic.  The geo_fence 
