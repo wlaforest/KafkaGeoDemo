@@ -22,6 +22,6 @@ curl -s -X "POST" "http://localhost:8088/ksql" \
              -H "Content-Type: application/vnd.ksql.v1+json; charset=utf-8" \
              -d '{"ksql": "DROP TABLE 'foo';"}'
 
-kafka-topics --bootstrap-server localhost:9092 --delete --topic bus_raw,bus_prepped,alert,fence_raw,fence,GEO_HEAT_MAP,MAX_BIN_COUNT,exploded_bus,wmata_rest
+kafka-topics --bootstrap-server localhost:9092 --delete --topic bus_raw,bus_prepped,alert,fence_raw,fence,GEO_HEAT_MAP,MAX_BIN_COUNT,exploded_bus,wmata_rest,fence_pre
 
 # TODO remove connectors in case this is the walk through
