@@ -14,7 +14,7 @@ const configViewLon = -77.0533;
 const configZoomLevel = 11;
 
 // MapBox API ket
-const configMapBoxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+const configMapBoxToken = 'pk.eyJ1Ijoid2xhZm9yZXN0IiwiYSI6ImNsaDVyYm5uajAyZm0zZXFqNzJqOGRoYW8ifQ.2JmULcS1VapsyM9vzILYvQ';
 
 // name of the Vehicle topic
 const configVehicleTopic = "bus_prepped";
